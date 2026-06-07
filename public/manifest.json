@@ -1,0 +1,21 @@
+{
+  "short_name": "FleetMaster",
+  "name": "Fleet Master Remix Logistics",
+  "icons": [
+    {
+      "src": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=192&auto=format&fit=crop",
+      "type": "image/jpeg",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=512&auto=format&fit=crop",
+      "type": "image/jpeg",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0d1117",
+  "theme_color": "#ff5a1f",
+  "display": "standalone",
+  "orientation": "portrait"
+}

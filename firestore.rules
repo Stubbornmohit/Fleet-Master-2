@@ -1,0 +1,67 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Global Catch-All Safety Net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper Functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // 1. User collection match with size check
+    match /users/{userId} {
+      allow read, get: if isOwner(userId);
+      allow create, update: if isOwner(userId) && request.resource.data.keys().hasAll(['id', 'username']) && request.resource.data.username is string && request.resource.data.username.size() <= 64;
+      allow delete: if isOwner(userId);
+
+      // Sub-collections under a user
+      match /tankers/{tankerId} {
+        allow read, get, list: if isOwner(userId);
+        allow create, update: if isOwner(userId) && isValidId(tankerId);
+        allow delete: if isOwner(userId);
+      }
+
+      match /drivers/{driverId} {
+        allow read, get, list: if isOwner(userId);
+        allow create, update: if isOwner(userId) && isValidId(driverId);
+        allow delete: if isOwner(userId);
+      }
+
+      match /lrs/{lrId} {
+        allow read, get, list: if isOwner(userId);
+        allow create, update: if isOwner(userId) && isValidId(lrId);
+        allow delete: if isOwner(userId);
+      }
+
+      match /trips/{tripId} {
+        allow read, get, list: if isOwner(userId);
+        allow create, update: if isOwner(userId) && isValidId(tripId);
+        allow delete: if isOwner(userId);
+      }
+
+      match /bills/{billId} {
+        allow read, get, list: if isOwner(userId);
+        allow create, update: if isOwner(userId) && isValidId(billId);
+        allow delete: if isOwner(userId);
+      }
+
+      match /expenses/{expenseId} {
+        allow read, get, list: if isOwner(userId);
+        allow create, update: if isOwner(userId) && isValidId(expenseId);
+        allow delete: if isOwner(userId);
+      }
+    }
+  }
+}

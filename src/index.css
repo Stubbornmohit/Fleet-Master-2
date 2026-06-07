@@ -1,0 +1,696 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-cyber: "Plus Jakarta Sans", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Tuning font sizes to standard, crisp high-density enterprise layout parameters */
+  --text-xs: 0.725rem;
+  --text-sm: 0.825rem;
+  --text-base: 0.95rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+}
+
+/* Custom Cyber Matrix Theme Tweaks mimicking high-end Delivr mockup UI/UX */
+body, input, select, textarea, button, p, span, div, h1, h2, h3, h4, h5, h6, table, th, td, label {
+  font-family: var(--font-sans) !important;
+}
+
+body {
+  background-color: #ffffff !important; /* Premium clean white background */
+  color: #0f172a !important; /* Crisp high-density enterprise black/charcoal font */
+  font-size: 14.5px;
+  line-height: 1.5;
+  background-image: none !important;
+}
+
+.font-sans, [class*="font-sans"] {
+  font-family: var(--font-sans) !important;
+}
+
+.font-mono, [class*="font-mono"], code, pre {
+  font-family: var(--font-mono) !important;
+}
+
+.font-cyber {
+  font-family: var(--font-cyber) !important;
+}
+
+/* Moving road coordinate line tracking animation in background */
+.highway-scrolling-lines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255, 90, 31, 0.012) 40px, rgba(255, 90, 31, 0.012) 41px);
+  background-size: 100% 200%;
+  animation: scroll-highway 35s linear infinite;
+  opacity: 0.85;
+  z-index: 0;
+}
+
+@keyframes scroll-highway {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+/* Gliding chemical logistics silhouettes in the lower horizon */
+.ghost-tanker-scroller {
+  position: fixed;
+  bottom: 8%;
+  left: 0;
+  width: 100%;
+  height: 140px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.06;
+}
+
+.ghost-tanker-asset {
+  position: absolute;
+  bottom: 0;
+  animation: pan-truck 65s linear infinite;
+  will-change: transform;
+}
+
+@keyframes pan-truck {
+  0% {
+    transform: translateX(-240px) scaleX(1);
+  }
+  48% {
+    transform: translateX(100vw) scaleX(1);
+  }
+  50% {
+    transform: translateX(100vw) scaleX(-1);
+  }
+  98% {
+    transform: translateX(-240px) scaleX(-1);
+  }
+  100% {
+    transform: translateX(-240px) scaleX(1);
+  }
+}
+
+/* Premium Dribbble/Behance Theme Utilities matching specific colors from mockup */
+.luxury-bg {
+  background-color: #0c0908;
+}
+
+@keyframes luxuryFloatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(28px) scale(0.96);
+    filter: blur(8px);
+  }
+  60% {
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: none;
+  }
+}
+
+.luxury-card {
+  background-color: #171312 !important; /* Beautiful dark cocoa-copper card container background from mockup */
+  border: 1px solid rgba(255, 100, 51, 0.08) !important;
+  box-shadow: 0 12px 48px -12px rgba(0, 0, 0, 0.85);
+  border-radius: 32px !important; /* Perfect round corners from reference image */
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Flex-column layout for consistent structural flow and alignment */
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  align-items: stretch !important;
+  min-height: 200px !important; /* Safe height guaranteeing consistency with varying content lengths */
+
+  /* Behance entry floating and fade animation */
+  animation: luxuryFloatIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.luxury-card:nth-child(1) { animation-delay: 0.05s; }
+.luxury-card:nth-child(2) { animation-delay: 0.15s; }
+.luxury-card:nth-child(3) { animation-delay: 0.25s; }
+.luxury-card:nth-child(4) { animation-delay: 0.35s; }
+
+/* Elegant container header with a fixed aspect ratio to hold titles & status/icon graphics consistently */
+.luxury-card-header {
+  aspect-ratio: 3.2 / 1 !important;
+  width: 100% !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  margin-bottom: 12px !important;
+  position: relative !important;
+}
+
+.luxury-card:hover {
+  border-color: rgba(255, 100, 51, 0.15) !important;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5) !important;
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* Custom 3D perspectives with active tactile hover elevation across all pages */
+.perspective-container {
+  perspective: 1200px;
+}
+
+.card-tilt-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.card-tilt-3d:hover {
+  transform: rotateX(4deg) rotateY(-3deg) translateY(-5px) translateZ(12px);
+  box-shadow: 0 25px 50px -12px rgba(255, 90, 31, 0.18), 0 0 25px rgba(255, 90, 31, 0.06);
+  border-color: rgba(255, 90, 31, 0.32) !important;
+}
+
+.luxury-glass {
+  background: rgba(23, 19, 18, 0.85) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 100, 51, 0.15) !important;
+  border-radius: 32px !important;
+}
+
+.orange-brand-glow {
+  box-shadow: 0 0 25px rgba(255, 100, 51, 0.28);
+}
+
+.orange-brand-gradient {
+  background: linear-gradient(135deg, #ff7a4e 0%, #ff5a1f 100%);
+}
+
+.orange-brand-text {
+  color: #ff7a4e;
+}
+
+.orange-brand-border {
+  border-color: rgba(255, 100, 51, 0.25) !important;
+}
+
+.custom-input {
+  background-color: #201a18 !important; /* Deep chocolate-espresso rounded input matching mockup tracker */
+  border: 1px solid rgba(255, 100, 51, 0.12) !important;
+  border-radius: 20px !important;
+  color: #ffffff !important;
+  transition: all 0.25s ease;
+}
+
+.custom-input:focus {
+  border-color: rgba(255, 90, 31, 0.6) !important;
+  box-shadow: 0 0 14px rgba(255, 90, 31, 0.2);
+}
+
+.tab-pill {
+  border-radius: 24px !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tab-pill-active {
+  background: linear-gradient(135deg, #ff7c4f 0%, #ff5314 100%) !important;
+  box-shadow: 0 8px 24px rgba(255, 83, 20, 0.3) !important;
+  color: #ffffff !important;
+}
+
+/* Scrollbar tweaks to blend beautifully */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0c0908;
+}
+::-webkit-scrollbar-thumb {
+  background: #241d1b;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ff5a1f;
+}
+
+/* Animations for elegant transit and sliders */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.8; box-shadow: 0 0 12px rgba(255, 100, 51, 0.2); }
+  50% { opacity: 1; box-shadow: 0 0 25px rgba(255, 100, 51, 0.45); }
+}
+
+.animate-glow {
+  animation: pulseGlow 3s infinite ease-in-out;
+}
+
+.gaming-hud {
+  box-shadow: 0 0 20px rgba(255, 100, 51, 0.12);
+  border-color: rgba(255, 100, 51, 0.25) !important;
+  background-color: #171312 !important;
+}
+
+.hud-green {
+  border-color: rgba(34, 197, 94, 0.4) !important;
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.15);
+}
+
+.hud-red {
+  border-color: rgba(239, 68, 68, 0.4) !important;
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.15);
+}
+
+/* Animations for Radar Scan lines & glowing energy */
+@keyframes scanning {
+  0% { transform: translateY(-100%); opacity: 0.1; }
+  50% { opacity: 0.6; }
+  100% { transform: translateY(100%); opacity: 0.1; }
+}
+
+.scan-line {
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to bottom, transparent, rgba(255, 90, 31, 0.4), transparent);
+  animation: scanning 4s linear infinite;
+}
+
+.scan-line-green {
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to bottom, transparent, rgba(34, 197, 94, 0.4), transparent);
+  animation: scanning 3s linear infinite;
+}
+
+/* ---------------------------------------------------- */
+/* LIGHT THEME CORRESPONDENCE LAYER (GLASSMORPHISM)    */
+/* ---------------------------------------------------- */
+:root.light-theme {
+  --bg-app: #f8fafc;
+  --bg-card: rgba(255, 255, 255, 0.9);
+  --bg-hover: rgba(255, 255, 255, 0.95);
+  --border-main: rgba(226, 232, 240, 0.9);
+  --text-main: #1e293b;
+  --text-white: #0f172a;
+  --text-muted: #57657a;
+  --bg-button: #f1f5f9;
+}
+
+:root.light-theme body,
+:root.light-theme .min-h-screen {
+  background-color: #f8fafc !important;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(249, 115, 22, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(14, 165, 233, 0.08) 0px, transparent 50%),
+    linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%) !important;
+  background-attachment: fixed !important;
+  color: #1e293b !important;
+}
+
+/* Glass card styling overrides */
+:root.light-theme .luxury-card,
+:root.light-theme .gaming-hud,
+:root.light-theme .luxury-glass,
+:root.light-theme aside,
+:root.light-theme nav,
+:root.light-theme main,
+:root.light-theme section,
+:root.light-theme .bg-\[\#171312\],
+:root.light-theme .bg-\[\#121010\],
+:root.light-theme .bg-\[\#141212\],
+:root.light-theme .bg-\[\#161b22\],
+:root.light-theme .bg-\[\#181616\],
+:root.light-theme .bg-\[\#1b1f27\],
+:root.light-theme .bg-\[\#1f242c\],
+:root.light-theme .bg-\[\#0a0808\],
+:root.light-theme .bg-\[\#0d0c0a\],
+:root.light-theme .bg-\[\#10141d\],
+:root.light-theme .bg-\[\#0d1117\],
+:root.light-theme .bg-\[\#0c0908\],
+:root.light-theme .bg-\[\#11141b\],
+:root.light-theme .bg-\[\#201a18\],
+:root.light-theme .bg-\[\#120e0d\],
+:root.light-theme .bg-\[\#1c1615\] {
+  background: rgba(255, 255, 255, 0.88) !important;
+  backdrop-filter: blur(20px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(190%) !important;
+  border: 1px solid rgba(226, 232, 240, 0.95) !important;
+  box-shadow: 0 10px 30px -10px rgba(148, 163, 184, 0.1), 0 1px 3px rgba(148, 163, 184, 0.02) !important;
+  color: #1e293b !important;
+}
+
+:root.light-theme .luxury-card:hover {
+  border-color: rgba(249, 115, 22, 0.35) !important;
+  box-shadow: 0 20px 40px -15px rgba(249, 115, 22, 0.08), 0 4px 15px rgba(15, 23, 42, 0.02) !important;
+}
+
+:root.light-theme header,
+:root.light-theme .sticky {
+  background: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border-bottom: 1.5px solid rgba(226, 232, 240, 0.9) !important;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.02) !important;
+}
+
+:root.light-theme main {
+  background: transparent !important;
+}
+
+/* Neutralize gradients representing dark background panels into gorgeous light elements */
+:root.light-theme .from-\[\#1e2530\],
+:root.light-theme .from-\[\#161b22\],
+:root.light-theme .from-\[\#1c1615\],
+:root.light-theme .from-\[\#1b1f27\],
+:root.light-theme .from-\[\#201a18\],
+:root.light-theme .from-\[\#171312\],
+:root.light-theme .from-\[\#0d1117\],
+:root.light-theme .from-\[\#0c0908\],
+:root.light-theme .from-\[\#11141b\],
+:root.light-theme .from-\[\#120e0d\],
+:root.light-theme .from-\[\#0a0808\],
+:root.light-theme .from-\[\#1c212b\],
+:root.light-theme .from-\[\#1a1514\],
+:root.light-theme .from-\[\#0d1015\] {
+  background-image: none !important;
+  background-color: rgba(255, 255, 255, 0.88) !important;
+  backdrop-filter: blur(20px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(190%) !important;
+  border: 1px solid rgba(226, 232, 240, 0.9) !important;
+  color: #1e293b !important;
+}
+
+/* Neutralize internal sections and cards' inner list containers */
+:root.light-theme .bg-\[\#0d1117\],
+:root.light-theme .bg-\[\#0d1117\]\/60,
+:root.light-theme .bg-\[\#0d1117\]\/80,
+:root.light-theme .bg-\[\#0d1117\]\/90,
+:root.light-theme .bg-\[\#0b0a0a\]\/80,
+:root.light-theme .bg-\[\#0b0a0a\]\/90,
+:root.light-theme .bg-\[\#121010\]\/50,
+:root.light-theme .bg-\[\#121010\]\/60,
+:root.light-theme .bg-\[\#121010\]\/80,
+:root.light-theme .bg-\[\#121010\]\/90,
+:root.light-theme .bg-\[\#121010\]\/95,
+:root.light-theme .bg-\[\#0d1017\]\/80,
+:root.light-theme .bg-\[\#0c0f16\],
+:root.light-theme .bg-\[\#121c2c\],
+:root.light-theme .bg-\[\#0f141c\],
+:root.light-theme .bg-\[\#1b2028\]\/40,
+:root.light-theme .bg-\[\#11141b\],
+:root.light-theme .bg-\[\#090b10\],
+:root.light-theme .bg-\[\#0d1015\],
+:root.light-theme .bg-\[\#0f131a\],
+:root.light-theme .bg-\[\#12161f\],
+:root.light-theme .bg-\[\#1c212b\],
+:root.light-theme .bg-\[\#1c1919\],
+:root.light-theme .bg-\[\#1a1514\],
+:root.light-theme .bg-\[\#181515\],
+:root.light-theme .bg-\[\#0d1013\],
+:root.light-theme .bg-\[\#141212\]\/90,
+:root.light-theme .bg-\[\#161b22\]\/50,
+:root.light-theme .bg-\[\#1f242c\],
+:root.light-theme .bg-black {
+  background-color: rgba(15, 23, 42, 0.04) !important;
+  background-image: none !important;
+  border-color: rgba(15, 23, 42, 0.08) !important;
+  color: #1e293b !important;
+}
+
+/* Warm terracotta tone overrides for billing / records lists & row states */
+:root.light-theme .bg-\[\#241d1b\],
+:root.light-theme .bg-\[\#120e0d\],
+:root.light-theme .bg-\[\#201a18\] {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  color: #334155 !important;
+  background-image: none !important;
+}
+
+/* Override all dark style borders to beautiful light colors */
+:root.light-theme .border-white\/\[0\.03\],
+:root.light-theme .border-white\/\[0\.04\],
+:root.light-theme .border-white\/\[0\.06\],
+:root.light-theme .border-white\/10,
+:root.light-theme .border-white\/20,
+:root.light-theme .border-\[\#30363d\],
+:root.light-theme .border-\[\#21262d\],
+:root.light-theme .border-\[\#2b211f\],
+:root.light-theme .border-\[\#3e322f\],
+:root.light-theme .border-\[\#2e2321\] {
+  border-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+:root.light-theme .divide-\[\#211918\] > * + * {
+  border-color: rgba(15, 23, 42, 0.05) !important;
+}
+
+:root.light-theme .bg-\[\#21262d\],
+:root.light-theme .bg-\[\#30363d\] {
+  background-color: rgba(15, 23, 42, 0.05) !important;
+  color: #1e293b !important;
+  border-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+:root.light-theme .hover\:bg-\[\#30363d\]:hover,
+:root.light-theme .hover\:bg-\[\#21262d\]:hover {
+  background-color: rgba(15, 23, 42, 0.08) !important;
+  color: #0d172a !important;
+}
+
+/* Text Element Color Standards & Override Safety */
+:root.light-theme h1,
+:root.light-theme h2,
+:root.light-theme h3,
+:root.light-theme h4,
+:root.light-theme h5,
+:root.light-theme h6,
+:root.light-theme .text-white,
+:root.light-theme .text-\[\#fcece3\],
+:root.light-theme .text-gray-100,
+:root.light-theme .text-gray-200,
+:root.light-theme .text-\[\#ff5a5f\]\/90 {
+  color: #0f172a !important;
+}
+
+:root.light-theme .text-gray-300,
+:root.light-theme .text-gray-400,
+:root.light-theme .text-\[\#c9d1d9\] {
+  color: #334155 !important;
+}
+
+:root.light-theme .text-\[\#8b949e\],
+:root.light-theme .text-gray-500 {
+  color: #4b5563 !important;
+}
+
+:root.light-theme .text-\[\#b8a49c\] {
+  color: #475569 !important;
+}
+
+:root.light-theme .text-\[\#ff7a4e\] {
+  color: #ea580c !important; /* Proper orange */
+}
+
+/* Prevent group-hover and hover text coloring bugs in light theme where elements turn white/unreadable */
+:root.light-theme .group:hover .group-hover\:text-white,
+:root.light-theme .group:hover .group-hover\:text-\[\#c9d1d9\],
+:root.light-theme .group:hover .group-hover\:text-gray-100,
+:root.light-theme .group:hover .group-hover\:text-gray-250,
+:root.light-theme .group:hover .group-hover\:text-gray-300,
+:root.light-theme .group:hover .group-hover\:text-gray-400 {
+  color: #0f172a !important;
+}
+
+:root.light-theme .hover\:text-white:hover {
+  color: #0f172a !important;
+}
+
+:root.light-theme .group:hover .group-hover\:text-\[\#8b949e\] {
+  color: #475569 !important;
+}
+
+/* Inputs, Select dropdowns, Textareas, Inputs in Forms */
+:root.light-theme input,
+:root.light-theme select,
+:root.light-theme textarea,
+:root.light-theme .custom-input {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  color: #0f172a !important;
+  border: 1px solid rgba(203, 213, 225, 0.9) !important;
+  border-radius: 12px !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.01) !important;
+}
+
+:root.light-theme input:focus,
+:root.light-theme select:focus,
+:root.light-theme textarea:focus,
+:root.light-theme .custom-input:focus {
+  border-color: rgba(234, 88, 12, 0.5) !important;
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.12) !important;
+  background-color: #ffffff !important;
+}
+
+:root.light-theme input::placeholder {
+  color: #94a3b8 !important;
+}
+
+/* Glassy Buttons overrides for light mode */
+:root.light-theme .bg-white\/\[0\.03\],
+:root.light-theme .bg-white\/\[0\.04\],
+:root.light-theme .bg-white\/5,
+:root.light-theme .bg-\[\#1a1818\] {
+  background-color: rgba(15, 23, 42, 0.04) !important;
+  color: #1e293b !important;
+}
+
+:root.light-theme .hover\:bg-white\/\[0\.08\]:hover,
+:root.light-theme .hover\:bg-white\/10:hover,
+:root.light-theme .hover\:bg-rose-950\/20:hover {
+  background-color: rgba(15, 23, 42, 0.08) !important;
+  color: #0f172a !important;
+}
+
+:root.light-theme .border-white\/\[0\.04\],
+:root.light-theme .border-white\/\[0\.06\],
+:root.light-theme .border-white\/10,
+:root.light-theme .border-\[\#2b211f\],
+:root.light-theme .border-\[\#21262d\] {
+  border-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+/* Rounded and transparent status badges */
+:root.light-theme .bg-cyan-500\/10,
+:root.light-theme .bg-cyan-400\/10 {
+  background-color: rgba(14, 165, 233, 0.15) !important;
+  color: #0369a1 !important;
+}
+
+:root.light-theme .bg-blue-500\/10,
+:root.light-theme .bg-blue-600\/10 {
+  background-color: rgba(37, 99, 235, 0.15) !important;
+  color: #1d4ed8 !important;
+}
+
+:root.light-theme .bg-orange-500\/10,
+:root.light-theme .bg-orange-400\/10 {
+  background-color: rgba(249, 115, 22, 0.15) !important;
+  color: #c2410c !important;
+}
+
+:root.light-theme .bg-red-500\/10,
+:root.light-theme .bg-rose-500\/10 {
+  background-color: rgba(239, 68, 68, 0.15) !important;
+  color: #b91c1c !important;
+}
+
+:root.light-theme .bg-emerald-500\/10 {
+  background-color: rgba(16, 185, 129, 0.15) !important;
+  color: #047857 !important;
+}
+
+:root.light-theme .divide-white\/\[0\.04\] > * + * {
+  border-color: rgba(15, 23, 42, 0.05) !important;
+}
+
+html, body {
+  scroll-behavior: smooth;
+}
+/* ---------------------------------------------------- */
+/* STRICT PRINT SHEET FOR DETAILED TAX INVOICES        */
+/* ---------------------------------------------------- */
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+  #printable-bill-invoice,
+  #printable-bill-invoice * {
+    visibility: visible !important;
+  }
+  #printable-bill-invoice {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    color: #000000 !important;
+    background: #ffffff !important;
+  }
+}
+
+/* ---------------------------------------------------- */
+/* 120HZ ULTRA-SMOOTH RENDERING & PERFORMANCE ENGINES */
+/* ---------------------------------------------------- */
+* {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Force hardware accelerated layers only for specific luxury cards and small motion-div objects if active */
+.luxury-card, 
+.motion-div {
+  transform: translate3d(0,0,0);
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+
+/* Override solid/opaque pitch black elements into smooth premium deep slate-chocolate */
+.bg-black {
+  background-color: #151110 !important;
+}
+.bg-black\/95 {
+  background-color: rgba(21, 17, 16, 0.95) !important;
+}
+.bg-black\/92 {
+  background-color: rgba(21, 17, 16, 0.92) !important;
+}
+.bg-black\/90 {
+  background-color: rgba(21, 17, 16, 0.90) !important;
+}
+.bg-black\/85 {
+  background-color: rgba(21, 17, 16, 0.85) !important;
+}
+.bg-black\/80 {
+  background-color: rgba(21, 17, 16, 0.80) !important;
+}
+.bg-black\/75 {
+  background-color: rgba(21, 17, 16, 0.75) !important;
+}
+.bg-black\/45 {
+  background-color: rgba(21, 17, 16, 0.45) !important;
+}
+.bg-black\/40 {
+  background-color: rgba(21, 17, 16, 0.40) !important;
+}
+.bg-black\/35 {
+  background-color: rgba(21, 17, 16, 0.35) !important;
+}
+.bg-black\/20 {
+  background-color: rgba(21, 17, 16, 0.20) !important;
+}
+.bg-black\/15 {
+  background-color: rgba(21, 17, 16, 0.15) !important;
+}
+.bg-black\/10 {
+  background-color: rgba(21, 17, 16, 0.10) !important;
+}
+
+/* Eliminate active system lags by forcing scrolling element optimisations */
+.custom-scrollbar,
+.overflow-y-auto,
+.overflow-x-auto {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  will-change: scroll-position;
+}

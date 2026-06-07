@@ -1,0 +1,8 @@
+{
+  "name": "Remix: Fleet Masteru2",
+  "description": "A high-performance Behance-inspired logistics and trip management platform tailored exclusively for petro-chemical tanker fleets.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

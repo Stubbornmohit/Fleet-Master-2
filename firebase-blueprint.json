@@ -1,0 +1,149 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Information about a dispatcher operator account",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "username": { "type": "string" },
+        "companyName": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" }
+      },
+      "required": ["id", "username"]
+    },
+    "Tanker": {
+      "title": "Tanker",
+      "description": "Petrochemical tanker registration and documents",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "tankerNumber": { "type": "string" },
+        "status": { "type": "string" },
+        "addedDate": { "type": "string" },
+        "capacity": { "type": "string" },
+        "productGroup": { "type": "string" }
+      },
+      "required": ["id", "tankerNumber"]
+    },
+    "Driver": {
+      "title": "Driver",
+      "description": "Operator driver record and credentials",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "contactNumber": { "type": "string" },
+        "bankAccountNumber": { "type": "string" },
+        "bankName": { "type": "string" },
+        "ifscCode": { "type": "string" },
+        "licenseNumber": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "name", "contactNumber"]
+    },
+    "LorryReceipt": {
+      "title": "LorryReceipt",
+      "description": "Lorry receipt registry (LR)",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "lrNo": { "type": "string" },
+        "dated": { "type": "string" },
+        "consignerName": { "type": "string" },
+        "consigneeName": { "type": "string" },
+        "tankerId": { "type": "string" },
+        "tankerNumber": { "type": "string" },
+        "product": { "type": "string" },
+        "qty": { "type": "number" },
+        "qtyUnit": { "type": "string" },
+        "placeFrom": { "type": "string" },
+        "placeTo": { "type": "string" },
+        "freightRate": { "type": "number" },
+        "freightTotal": { "type": "number" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "lrNo", "tankerId", "qty"]
+    },
+    "Trip": {
+      "title": "Trip",
+      "description": "Active or completed logistical trip",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "lrId": { "type": "string" },
+        "lrNo": { "type": "string" },
+        "tankerId": { "type": "string" },
+        "tankerNumber": { "type": "string" },
+        "driverId": { "type": "string" },
+        "driverName": { "type": "string" },
+        "placeFrom": { "type": "string" },
+        "placeTo": { "type": "string" },
+        "status": { "type": "string" },
+        "qty": { "type": "number" }
+      },
+      "required": ["id", "lrId", "tankerId", "driverId", "status"]
+    },
+    "MaintenanceBill": {
+      "title": "MaintenanceBill",
+      "description": "Maintenance work or expense invoice",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "tankerId": { "type": "string" },
+        "tankerNumber": { "type": "string" },
+        "vendorName": { "type": "string" },
+        "billNo": { "type": "string" },
+        "date": { "type": "string" },
+        "amount": { "type": "number" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "tankerId", "vendorName", "amount", "status"]
+    },
+    "TankerExpense": {
+      "title": "TankerExpense",
+      "description": "Operational expense details",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "tankerId": { "type": "string" },
+        "date": { "type": "string" },
+        "category": { "type": "string" },
+        "amount": { "type": "number" },
+        "detail": { "type": "string" }
+      },
+      "required": ["id", "tankerId", "category", "amount"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Dispacher user account"
+    },
+    "/users/{userId}/tankers/{tankerId}": {
+      "schema": "Tanker",
+      "description": "Vehicles owned by the user"
+    },
+    "/users/{userId}/drivers/{driverId}": {
+      "schema": "Driver",
+      "description": "Drivers onboarded by the user"
+    },
+    "/users/{userId}/lrs/{lrId}": {
+      "schema": "LorryReceipt",
+      "description": "Lorry receipts under user supervision"
+    },
+    "/users/{userId}/trips/{tripId}": {
+      "schema": "Trip",
+      "description": "Logistical trips monitored by the user"
+    },
+    "/users/{userId}/bills/{billId}": {
+      "schema": "MaintenanceBill",
+      "description": "Maintenance bills registered by the user"
+    },
+    "/users/{userId}/expenses/{expenseId}": {
+      "schema": "TankerExpense",
+      "description": "Logged operational expenses of current user"
+    }
+  }
+}

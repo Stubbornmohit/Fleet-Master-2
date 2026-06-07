@@ -1,0 +1,6 @@
+{
+  "appId": "com.fleetmaster.remix",
+  "appName": "Fleet Master Remix",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}
